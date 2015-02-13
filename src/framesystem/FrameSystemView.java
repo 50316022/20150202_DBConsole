@@ -76,7 +76,7 @@ public class FrameSystemView extends Frame implements ActionListener,WindowListe
 			}
 			JFreeChart chart = ChartFactory.createBarChart("Grip_strength",
 					"name",
-					"R_Grip_Strength",
+					"Grip_Strength_Average",
 					data,
 					PlotOrientation.VERTICAL,
 					true,
