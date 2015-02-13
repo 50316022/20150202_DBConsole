@@ -38,17 +38,17 @@ public class MySQL extends Frame implements ActionListener, WindowListener {
 
 	public MySQL(FrameSystemController controller) {
 		addWindowListener(this);
-		setTitle("Arm_Strength");
+		setTitle("Chocolate_Ranking");
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		add(text1);
 		add(text2);
 		button1.addActionListener(this);
 		this.driver = "org.gjt.mm.mysql.Driver";
 		this.server = "j11000.sangi01.net";
-		this.dbname = "50316021";
+		this.dbname = "50316022";
 		this.url = "jdbc:mysql://"+server+"/"+dbname+"? useUnicode=true&characterEncoding=UTF-8";
-		this.user = "50316021";
-		this.password = "50316021";
+		this.user = "50316022";
+		this.password = "50316022";
 		try {
 			this.con = DriverManager.getConnection(url,user,password);
 			this.stmt = con.createStatement();
@@ -79,7 +79,7 @@ public class MySQL extends Frame implements ActionListener, WindowListener {
 	}
 	
 	public ResultSet selectAll(){
-		String sql = "SELECT * FROM Grip_Strength";
+		String sql = "SELECT * FROM Love_You_Chocolate";
 		ResultSet rs = null;
 		try {
 			rs = stmt.executeQuery(sql);

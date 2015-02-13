@@ -27,11 +27,11 @@ import dbconsole.MySQL;
 public class FrameSystemView extends Frame implements ActionListener,WindowListener
 {
 
-	private Button button1 = new Button("Let's_Muscle!!");
+	private Button button1 = new Button("How many chocolates do you have??");
 	CardLayout cardlayout;
 	Panel panel;
 	Panel btnpanel;
-	int ave;
+	
 	
 	
 	public FrameSystemView(FrameSystemController controller) {
@@ -39,7 +39,7 @@ public class FrameSystemView extends Frame implements ActionListener,WindowListe
 		panel = new Panel();
 		btnpanel = new Panel();
 		addWindowListener(this);
-		setTitle("Powerful_Animals");
+		setTitle("Chocolate Ranking");
 		cardlayout = new CardLayout();
 		setLayout(cardlayout);
 		btnpanel.add(button1,BorderLayout.CENTER);
@@ -53,8 +53,8 @@ public class FrameSystemView extends Frame implements ActionListener,WindowListe
 	@Override
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource()==button1){
-			int rgs,lgs;
-			String name,rank;
+			int Age,Amount;
+			String Name;
 			ResultSet rs;
 			MySQL mysql = new MySQL(null);
 			rs = mysql.selectAll();
@@ -62,21 +62,20 @@ public class FrameSystemView extends Frame implements ActionListener,WindowListe
 			try{
 				panel.add(new Label("DataBase Loaded"));
 				while(rs.next()){
-					ave = 0;
-					name = rs.getString("name");
-					rgs = rs.getInt("R_Grip_Strength");
-					lgs = rs.getInt("L_Grip_Strength");
-					rank = rs.getString("Rank");
-					ave = (rgs+lgs)/2;
-					data.addValue(ave,name,""+name);
-					panel.add(new Label("Name:"+name+"	R_Grip_Strength:"+rgs+"	L_Grip_Strength:"+lgs+"	Rank:"+rank));
+					Name = rs.getString("Name");
+					Age = rs.getInt("Age");
+					Amount = rs.getInt("Amount");
+					
+		
+					data.addValue(Amount,Name,""+Age);
+					panel.add(new Label("Name:"+Name+"	Age:"+Age+"	Amount:"+Amount));
 				}
 					
 			}catch(SQLException et){
 			}
-			JFreeChart chart = ChartFactory.createBarChart("Grip_strength",
-					"name",
-					"Grip_Strength_Average",
+			JFreeChart chart = ChartFactory.createBarChart("Amount of Chocolates",
+					"Name",
+					"Amount",
 					data,
 					PlotOrientation.VERTICAL,
 					true,
